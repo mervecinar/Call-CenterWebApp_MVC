@@ -1,0 +1,122 @@
+﻿@model WebApplication13.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!doctype html>
+<html lang="en">
+<head ruanat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/add66288fd.js" crossorigin="anonymous"></script>
+</head>
+
+<h1>Create</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="control-label"></label>
+                    <input asp-for="CustomerId" class="form-control" />
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+        <div class="form-group">
+                    <label asp-for="country" class="control-label"></label>
+                    <input asp-for="country" class="form-control" />
+                    <span asp-validation-for="country" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="phone" class="control-label"></label>
+                    <input asp-for="phone" class="form-control" />
+                    <span asp-validation-for="phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="age" class="control-label"></label>
+                    <input asp-for="age" class="form-control" />
+                    <span asp-validation-for="age" class="text-danger"></span>
+                </div>
+       
+  
+                   <br />
+                 <p> Select Your Represantative</p>
+                
+                <div class="form-group">
+
+                    @Html.DropDownListFor(m=>m.CosRepresantativeId, new SelectList(ViewBag.ListofCust, "Value", "Text"), "No choosen yet", new {@onChange="selectedText(this)"})
+
+                    @* <input type="text" id="txt" readonly="readonly" name="typeSelected"></input>*@
+
+                </div>
+                <br />
+                <div class="form-group">
+                    <fieldset>
+                        Point for your Represantative;
+                        <select id="point" name="point">
+
+                            <option value=""></option>
+
+                            <option selected="selected" value="1">1</option>
+
+                            <option value="2">2</option>
+
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+                        </select>
+                </div>
+             
+                <br />
+            <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" style="background-color: green" />
+                </div>
+
+            }
+
+
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"> <i class="fa-solid fa-backward"></i>&nbsp;Back to the Table </a> &nbsp;&nbsp;
+   
+</div>
+</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function selectedText(ddlitem) {
+        var setvalue = ddlitem.value;
+        var seltext = ddlitem.options[ddlitem.selectedIndex].innerHTML;
+        $('#txt').val(seltext);
+
+    }
+</script>

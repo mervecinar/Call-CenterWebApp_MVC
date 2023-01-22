@@ -1,0 +1,113 @@
+﻿
+
+@model IEnumerable<WebApplication13.Models.Score>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel=stylesheet/>
+    <script src="https://kit.fontawesome.com/add66288fd.js" crossorigin="anonymous"></script>
+    <title>       </title>
+     
+</head>
+
+    <style>
+        body {
+            background-color: white;
+        }
+        h1 {
+    z-index: 99999;
+    overflow: hidden;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+        table {
+   
+            border-collapse: collapse;
+            width: 375px;
+            margin: auto;
+        }
+
+        td, th {
+            border: 1px solid black;
+            text-align: left;
+            vertical-align: middle;
+            padding: 3px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightgreen;
+        }
+
+        tr:nth-child(odd) {
+            background-color:orange;
+        }
+
+      tr:first-child {
+        background-color: white;
+    }
+
+
+        ul {
+            text-align: center;
+            list-style-position: inside;
+        }
+        h1{
+            color:darkslategrey;
+            text-align: center;
+    }
+    </style>
+<body>
+    <h1><i class="fa-solid fa-award"></i> &nbsp;&nbsp;Scores Table Of Represantatives</h1>
+   
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>
+                    @Html.DisplayNameFor(model => model.CosRepresantativeId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.totalScore)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CosRepresantativeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalScore)
+                    </td>
+                  
+                    <td>
+
+                        <a asp-area="" asp-controller="CosRepresantatives" asp-action="Details" asp-route-id="@item.CosRepresantativeId">Detail of Represantative</a>
+                   
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
+
